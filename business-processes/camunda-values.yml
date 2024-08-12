@@ -709,7 +709,7 @@ zeebe:
   #   memory   - means zeebe uses a tmpfs for the data persistence, be aware that this takes the limits into account
   persistenceType: disk
   ## @param zeebe.pvcSize defines the persistent volume claim size, which is used by each broker pod https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims
-  pvcSize: "10Gi"
+  pvcSize: "32Gi"
   ## @param zeebe.pvcAccessModes can be used to configure the persistent volume claim access mode https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
   pvcAccessModes: ["ReadWriteOnce"]
   ## @param zeebe.pvcStorageClassName can be used to set the storage class name which should be used by the persistent volume claim. It is recommended to use a storage class, which is backed with a SSD.
