@@ -1939,7 +1939,7 @@ identity:
   #         global.identity.auth.enabled=false
   #         optimize.enabled=false
   #         webModeler.enabled=false
-  enabled: false
+  enabled: true
 
   ## @param identity.fullnameOverride can be used to override the full name of the Identity resources
   fullnameOverride: ""
