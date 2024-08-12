@@ -3420,7 +3420,7 @@ elasticsearch:
     heapSize: 1024m
     persistence:
       ## @param elasticsearch.master.persistence.size
-      size: 10Gi
+      size: 64Gi
     resources:
       requests:
         ## @param elasticsearch.master.resources.requests.cpu cpu request
