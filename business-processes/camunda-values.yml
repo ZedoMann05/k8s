@@ -590,7 +590,7 @@ console:
 ## @extra zeebe configuration for the Zeebe sub chart. Contains configuration for the Zeebe broker and related resources.
 zeebe:
   ## @param zeebe.enabled if true, all zeebe related resources are deployed via the helm release
-  enabled: true
+  enabled: false
 
   ## @param zeebe.debug if true, extra info is printed.
   debug: false
