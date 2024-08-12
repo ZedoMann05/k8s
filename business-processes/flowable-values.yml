@@ -40,7 +40,7 @@ rest:
       cpu: "100m"
       memory: "256Mi"
     limits:
-      cpu: "256m"
+      cpu: "512m"
       memory: "512Mi"
   javaOpts: "-Xmx1g -Xms1g"
   admin:
