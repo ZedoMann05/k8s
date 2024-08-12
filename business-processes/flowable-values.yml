@@ -38,10 +38,10 @@ rest:
   resources:
     requests:
       cpu: "100m"
-      memory: "1Gi"
+      memory: "256Mi"
     limits:
-      cpu: "1"
-      memory: "1Gi"
+      cpu: "256m"
+      memory: "512Mi"
   javaOpts: "-Xmx1g -Xms1g"
   admin:
     username: rest-admin
