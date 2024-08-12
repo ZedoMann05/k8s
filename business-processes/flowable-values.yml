@@ -1,0 +1,64 @@
+host:
+  # Public / external hostname (f.e. LB)
+  external: flowable.my-k8s.dynv6.net
+# Global database name, user and password
+database:
+  name: &database-name flowable
+  username: &database-username flowable
+  password: &database-password flowable
+  # specify to overwrite dynamic template values
+  # datasourceDriverClassName:
+  # datasourceUrl:
+cloudSql:
+  enabled: false
+  # Google Cloud SQL instance connection name
+  # instanceConnectionName:
+  # Google credentials file name stored as secret in the cluster
+  credentials: cloudsql-credentials.json
+
+ingress:
+  enabled: true
+  sslRedirect: true
+  useHost: true
+  class: "nginx"
+  clusterIssuer: "letsencrypt-nginx"
+
+# Enable either Flowable UI or Flowable REST
+rest:
+  enabled: true
+  replicas: 1
+  service:
+    name: flowable-rest
+  contextPath: /flowable-rest
+  ingressPath: /
+  image:
+    repository: flowable/flowable-rest
+    # tag:
+    pullPolicy: Always
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+    limits:
+      cpu: "100m"
+      memory: "128Mi"
+  javaOpts: "-Xmx1g -Xms1g"
+  admin:
+    username: rest-admin
+    password: test
+  livenessProbe:
+    initialDelaySeconds: 60
+    timeoutSeconds: 10
+    failureThreshold: 10
+
+postgres:
+  enabled: true
+  nameOverride: postgres
+  image:
+    registry: docker.io
+    repository: bitnami/postgresql
+    tag: 12.10.0
+  auth:
+    username: *database-username
+    password: *database-password
+    database: *database-name

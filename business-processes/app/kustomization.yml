@@ -1,0 +1,4 @@
+namespace: business-processes
+
+resources:
+  - namespace.yml
