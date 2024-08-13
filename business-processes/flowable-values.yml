@@ -56,7 +56,7 @@ ui:
     failureThreshold: 10
 
 rest:
-  enabled: true
+  enabled: false
   replicas: 1
   service:
     name: flowable-rest

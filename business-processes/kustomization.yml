@@ -14,5 +14,5 @@ helmCharts:
     releaseName: flowable
     repo: https://flowable.github.io/helm/
     namespace: business-processes
-    version: 7.0.1
+    version: 6.8.0
     valuesFile: flowable-values.yml
