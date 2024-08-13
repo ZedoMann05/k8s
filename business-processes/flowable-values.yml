@@ -3,9 +3,9 @@ host:
   external: flowable.my-k8s.dynv6.net
 # Global database name, user and password
 database:
-  name: &database-name flowable
-  username: &database-username flowable
-  password: &database-password flowable
+  name: flowable
+  username: flowable
+  password: flowable
   # specify to overwrite dynamic template values
   # datasourceDriverClassName:
   # datasourceUrl:
@@ -84,12 +84,17 @@ rest:
 
 postgres:
   enabled: true
-  nameOverride: postgres
-  image:
-    registry: docker.io
-    repository: bitnami/postgresql
-    tag: 12.10.0
-  auth:
-    username: *database-username
-    password: *database-password
-    database: *database-name
+  service:
+    name: flowable-postgres
+  image: postgres:9.6
+  storage:
+    storageClassName: "standard"
+#    storageClassName: "ssd"
+    size: 1Gi
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "1Gi"
+    limits:
+      cpu: "1000m"
+      memory: "1Gi"
