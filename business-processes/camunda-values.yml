@@ -1117,7 +1117,7 @@ zeebeGateway:
   ingress:
     grpc:
       ## @param zeebeGateway.ingress.grpc.enabled if true, an ingress resource is deployed with the Zeebe gateway deployment. Only useful if an ingress controller is available, like nginx.
-      enabled: false
+      enabled: true
       ## @param zeebeGateway.ingress.grpc.className defines the class or configuration of ingress which should be used by the controller
       className: nginx
       ## @param zeebeGateway.ingress.grpc.annotations [object] defines the ingress related annotations, consumed mostly by the ingress controller
@@ -1127,7 +1127,8 @@ zeebeGateway:
       ## @skip zeebeGateway.ingress.grpc.annotations.nginx.ingress.kubernetes.io/proxy-buffer-size
       annotations:
         ingress.kubernetes.io/rewrite-target: "/"
-        nginx.ingress.kubernetes.io/ssl-redirect: "false"
+        cert-manager.io/cluster-issuer: letsencrypt-nginx
+        nginx.ingress.kubernetes.io/ssl-redirect: "true"
         nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
         nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
       ## @param zeebeGateway.ingress.grpc.path defines the path which is associated with the Zeebe gateway's gRPC service and port https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-rules
@@ -1136,11 +1137,11 @@ zeebeGateway:
       pathType: Prefix
       ## @param zeebeGateway.ingress.grpc.host can be used to define the host of the ingress rule. https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-rules
       # If not specified the rules applies to all inbound gRPC traffic, if specified the rule applies to that host.
-      host: ""
+      host: "camunda.my-k8s.dynv6.net"
       ## @extra zeebeGateway.ingress.grpc.tls configuration for tls on the ingress resource https://kubernetes.io/docs/concepts/services-networking/ingress/#tls
       tls:
         ## @param zeebeGateway.ingress.grpc.tls.enabled if true, then tls is configured on the ingress resource. If enabled the Ingress.host need to be defined.
-        enabled: false
+        enabled: true
         ## @param zeebeGateway.ingress.grpc.tls.secretName defines the secret name which contains the TLS private key and certificate
         secretName: camunda-platform-zeebe-gateway-grpc
     rest:
@@ -1285,7 +1286,7 @@ operate:
 
   ingress:
     ## @param operate.ingress.enabled if true, an ingress resource is deployed with the Operate deployment. Only useful if an ingress controller is available, like nginx.
-    enabled: false
+    enabled: true
     ## @param operate.ingress.className defines the class or configuration of ingress which should be used by the controller
     className: nginx
     ## @param operate.ingress.annotations [object] defines the ingress related annotations, consumed mostly by the ingress controller
@@ -1294,7 +1295,8 @@ operate:
     ## @skip operate.ingress.annotations.nginx.ingress.kubernetes.io/proxy-buffer-size
     annotations:
       ingress.kubernetes.io/rewrite-target: "/"
-      nginx.ingress.kubernetes.io/ssl-redirect: "false"
+      cert-manager.io/cluster-issuer: letsencrypt-nginx
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
       nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
     ## @param operate.ingress.path defines the path which is associated with the Operate service and port https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-rules
     path: /
@@ -1302,11 +1304,11 @@ operate:
     pathType: Prefix
     ## @param operate.ingress.host can be used to define the host of the ingress rule. https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-rules
     # If not specified the rules applies to all inbound http traffic, if specified the rule applies to that host.
-    host: ""
+    host: "camunda.my-k8s.dynv6.net"
     ## @extra Ingress.tls configuration for tls on the ingress resource https://kubernetes.io/docs/concepts/services-networking/ingress/#tls
     tls:
       ## @param operate.ingress.tls.enabled if true, then tls is configured on the ingress resource. If enabled the Ingress.host need to be defined.
-      enabled: false
+      enabled: true
       ## @param operate.ingress.tls.secretName defines the secret name which contains the TLS private key and certificate
       secretName: camunda-platform-operate
 
@@ -1624,7 +1626,7 @@ tasklist:
 
   ingress:
     ## @param tasklist.ingress.enabled if true, an ingress resource is deployed with the tasklist deployment. Only useful if an ingress controller is available, like nginx.
-    enabled: false
+    enabled: true
     ## @param tasklist.ingress.className defines the class or configuration of ingress which should be used by the controller
     className: nginx
     ## @param tasklist.ingress.annotations [object] defines the ingress related annotations, consumed mostly by the ingress controller
@@ -1633,7 +1635,8 @@ tasklist:
     ## @skip tasklist.ingress.annotations.nginx.ingress.kubernetes.io/proxy-buffer-size
     annotations:
       ingress.kubernetes.io/rewrite-target: "/"
-      nginx.ingress.kubernetes.io/ssl-redirect: "false"
+      cert-manager.io/cluster-issuer: letsencrypt-nginx
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
       nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
     ## @param tasklist.ingress.path defines the path which is associated with the operate service and port https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-rules
     path: /
@@ -1641,10 +1644,10 @@ tasklist:
     pathType: Prefix
     ## @param tasklist.ingress.host can be used to define the host of the ingress rule. https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-rules
     # If not specified the rules applies to all inbound http traffic, if specified the rule applies to that host.
-    host: ""
+    host: "camunda.my-k8s.dynv6.net"
     tls:
       ## @param tasklist.ingress.tls.enabled if true, then tls is configured on the ingress resource. If enabled the Ingress.host need to be defined.
-      enabled: false
+      enabled: true
       ## @param tasklist.ingress.tls.secretName defines the secret name which contains the TLS private key and certificate
       secretName: camunda-platform-tasklist
 
@@ -1882,7 +1885,7 @@ optimize:
 
   ingress:
     ## @param optimize.ingress.enabled if true, an ingress resource is deployed with the Optimize deployment. Only useful if an ingress controller is available, like nginx.
-    enabled: false
+    enabled: true
     ## @param optimize.ingress.className defines the class or configuration of ingress which should be used by the controller
     className: nginx
     ## @param optimize.ingress.annotations [object] defines the ingress related annotations, consumed mostly by the ingress controller
@@ -1891,7 +1894,8 @@ optimize:
     ## @skip optimize.ingress.annotations.nginx.ingress.kubernetes.io/proxy-buffer-size
     annotations:
       ingress.kubernetes.io/rewrite-target: "/"
-      nginx.ingress.kubernetes.io/ssl-redirect: "false"
+      cert-manager.io/cluster-issuer: letsencrypt-nginx
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
       nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
     ## @param optimize.ingress.path defines the path which is associated with the operate service and port https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-rules
     path: /
@@ -1899,11 +1903,11 @@ optimize:
     pathType: Prefix
     ## @param optimize.ingress.host can be used to define the host of the ingress rule. https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-rules
     # If not specified the rules applies to all inbound http traffic, if specified the rule applies to that host.
-    host: ""
+    host: "camunda.my-k8s.dynv6.net"
     ## @extra optimize.ingress.tls configuration for tls on the ingress resource https://kubernetes.io/docs/concepts/services-networking/ingress/#tls
     tls:
       ## @param optimize.ingress.tls.enabled if true, then tls is configured on the ingress resource. If enabled the Ingress.host need to be defined.
-      enabled: false
+      enabled: true
       ## @param optimize.ingress.tls.secretName defines the secret name which contains the TLS private key and certificate
       secretName: camunda-platform-optimize
 
@@ -2143,7 +2147,7 @@ identity:
 
   ingress:
     ## @param identity.ingress.enabled if true, an ingress resource is deployed with the identity deployment. Only useful if an ingress controller is available, like nginx.
-    enabled: false
+    enabled: true
     ## @param identity.ingress.className defines the class or configuration of ingress which should be used by the controller
     className: nginx
     ## @param identity.ingress.annotations [object] defines the ingress related annotations, consumed mostly by the ingress controller
@@ -2152,7 +2156,8 @@ identity:
     ## @skip identity.ingress.annotations.nginx.ingress.kubernetes.io/proxy-buffer-size
     annotations:
       ingress.kubernetes.io/rewrite-target: "/"
-      nginx.ingress.kubernetes.io/ssl-redirect: "false"
+      cert-manager.io/cluster-issuer: letsencrypt-nginx
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
       nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
     ## @param identity.ingress.path defines the path which is associated with the operate service and port https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-rules
     path: /
@@ -2160,11 +2165,11 @@ identity:
     pathType: Prefix
     ## @param identity.ingress.host can be used to define the host of the ingress rule. https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-rules
     # If not specified the rules applies to all inbound http traffic, if specified the rule applies to that host.
-    host: ""
+    host: "camunda.my-k8s.dynv6.net"
     ## @extra identity.ingress.tls configuration for tls on the ingress resource https://kubernetes.io/docs/concepts/services-networking/ingress/#tls
     tls:
       ## @param identity.ingress.tls.enabled if true, then tls is configured on the ingress resource. If enabled the Ingress.host need to be defined.
-      enabled: false
+      enabled: true
       ## @param identity.ingress.tls.secretName defines the secret name which contains the TLS private key and certificate
       secretName: camunda-platform-identity
 
@@ -3309,7 +3314,7 @@ connectors:
 
   ingress:
     ## @param connectors.ingress.enabled if true, an ingress resource is deployed with the Connectors deployment. Only useful if an ingress controller is available, like nginx.
-    enabled: false
+    enabled: true
     ## @param connectors.ingress.className defines the class or configuration of ingress which should be used by the controller
     className: nginx
     ## @param connectors.ingress.annotations [object] defines the ingress related annotations, consumed mostly by the ingress controller
@@ -3317,8 +3322,9 @@ connectors:
     ## @skip connectors.ingress.annotations.nginx.ingress.kubernetes.io/ssl-redirect
     ## @skip connectors.ingress.annotations.nginx.ingress.kubernetes.io/proxy-buffer-size
     annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-nginx
       ingress.kubernetes.io/rewrite-target: "/"
-      nginx.ingress.kubernetes.io/ssl-redirect: "false"
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
       nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
     ## @param connectors.ingress.path defines the path which is associated with the Connectors service and port https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-rules
     path: /
@@ -3326,11 +3332,11 @@ connectors:
     pathType: Prefix
     ## @param connectors.ingress.host can be used to define the host of the ingress rule. https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-rules
     # If not specified the rules applies to all inbound http traffic, if specified the rule applies to that host.
-    host: ""
+    host: "camunda.my-k8s.dynv6.net"
     ## @extra connectors.ingress.tls configuration for tls on the ingress resource https://kubernetes.io/docs/concepts/services-networking/ingress/#tls
     tls:
       ## @param connectors.ingress.tls.enabled if true, then tls is configured on the ingress resource. If enabled the Ingress.host need to be defined.
-      enabled: false
+      enabled: true
       ## @param connectors.ingress.tls.secretName defines the secret name which contains the TLS private key and certificate
       secretName: camunda-platform-connectors
 
