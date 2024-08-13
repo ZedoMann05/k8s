@@ -89,7 +89,7 @@ postgres:
   image: postgres:9.6
   storage:
 #    storageClassName: "standard"
-    storageClassName: "ssd"
+    storageClassName: "do-block-storage"
     size: 1Gi
   resources:
     requests:
