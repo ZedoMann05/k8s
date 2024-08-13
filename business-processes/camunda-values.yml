@@ -1137,7 +1137,7 @@ zeebeGateway:
       pathType: Prefix
       ## @param zeebeGateway.ingress.grpc.host can be used to define the host of the ingress rule. https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-rules
       # If not specified the rules applies to all inbound gRPC traffic, if specified the rule applies to that host.
-      host: "camunda.my-k8s.dynv6.net"
+      host: "zeebe.camunda.my-k8s.dynv6.net"
       ## @extra zeebeGateway.ingress.grpc.tls configuration for tls on the ingress resource https://kubernetes.io/docs/concepts/services-networking/ingress/#tls
       tls:
         ## @param zeebeGateway.ingress.grpc.tls.enabled if true, then tls is configured on the ingress resource. If enabled the Ingress.host need to be defined.
