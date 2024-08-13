@@ -88,8 +88,8 @@ postgres:
     name: flowable-postgres
   image: postgres:9.6
   storage:
-    storageClassName: "standard"
-#    storageClassName: "ssd"
+#    storageClassName: "standard"
+    storageClassName: "ssd"
     size: 1Gi
   resources:
     requests:
