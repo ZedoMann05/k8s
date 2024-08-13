@@ -416,11 +416,11 @@ console:
   ## @param console.resources.requests.cpu
   resources:
     requests:
-      cpu: "100m"
-      memory: "128Mi"
+      cpu: 1
+      memory: 1Gi
     limits:
-      cpu: "100m"
-      memory: "128Mi"
+      cpu: 2
+      memory: 2Gi
 
   ## @param console.env can be used to set extra environment variables in each app container
   env: []
@@ -590,7 +590,7 @@ console:
 ## @extra zeebe configuration for the Zeebe sub chart. Contains configuration for the Zeebe broker and related resources.
 zeebe:
   ## @param zeebe.enabled if true, all zeebe related resources are deployed via the helm release
-  enabled: false
+  enabled: true
 
   ## @param zeebe.debug if true, extra info is printed.
   debug: false
@@ -697,11 +697,11 @@ zeebe:
   ## @param zeebe.resources.limits.memory
   resources:
     requests:
-      cpu: "100m"
-      memory: "128Mi"
+      cpu: 800m
+      memory: 1200Mi
     limits:
-      cpu: "100m"
-      memory: "128Mi"
+      cpu: 960m
+      memory: 1920Mi
 
   ## @param zeebe.persistenceType defines the type of persistence which is used by Zeebe. Possible values are: disk, local and memory.
   #   disk  - means a persistence volume claim is configured and used
@@ -943,11 +943,11 @@ zeebeGateway:
   ## @param zeebeGateway.resources.limits.memory
   resources:
     requests:
-      cpu: "100m"
-      memory: "128Mi"
+      cpu: 400m
+      memory: 450Mi
     limits:
-      cpu: "100m"
-      memory: "128Mi"
+      cpu: 400m
+      memory: 450Mi
 
   ## @param zeebeGateway.priorityClassName can be used to define the gateway pods priority https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#priorityclass
   priorityClassName: ""
@@ -1199,7 +1199,7 @@ zeebeGateway:
 ## @extra.operate configuration for the Operate sub chart.
 operate:
   ## @param operate.enabled if true, the Operate deployment and its related resources are deployed via a helm release
-  enabled: false
+  enabled: true
 
   ## @extra operate.image configuration to configure the Operate image specifics
   image:
@@ -1249,11 +1249,11 @@ operate:
   ## @param operate.resources.limits.memory
   resources:
     requests:
-      cpu: "100m"
-      memory: "128Mi"
+      cpu: 600m
+      memory: 400Mi
     limits:
-      cpu: "100m"
-      memory: "128Mi"
+      cpu: 2000m
+      memory: 2Gi
 
   ## @param operate.env can be used to set extra environment variables in each Operate container
   env: []
@@ -1440,7 +1440,7 @@ operate:
 # Tasklist configuration for the tasklist sub chart.
 tasklist:
   ## @param tasklist.enabled if true, the tasklist deployment and its related resources are deployed via a helm release
-  enabled: false
+  enabled: true
 
   ## @extra tasklist.image configuration to configure the tasklist image specifics
   image:
@@ -1615,11 +1615,11 @@ tasklist:
   ## @param tasklist.resources.limits.memory
   resources:
     requests:
-      cpu: "100m"
-      memory: "128Mi"
+      cpu: 400m
+      memory: 1Gi
     limits:
-      cpu: "100m"
-      memory: "128Mi"
+      cpu: 1000m
+      memory: 2Gi
 
   ingress:
     ## @param tasklist.ingress.enabled if true, an ingress resource is deployed with the tasklist deployment. Only useful if an ingress controller is available, like nginx.
@@ -1678,7 +1678,7 @@ tasklist:
 # Optimize configuration for the Optimize sub chart.
 optimize:
   ## @param optimize.enabled if true, the Optimize deployment and its related resources are deployed via a helm release
-  enabled: false
+  enabled: true
 
   ## @extra optimize.image configuration to configure the Optimize image specifics
   # https://hub.docker.com/r/camunda/optimize/tags
@@ -1706,12 +1706,11 @@ optimize:
     ## @param optimize.migration.resources.limits.memory
     resources:
       requests:
-        cpu: "100m"
-        memory: "128Mi"
+        cpu: 600m
+        memory: 1Gi
       limits:
-        cpu: "100m"
-        memory: "128Mi"
-
+        cpu: 2000m
+        memory: 2Gi
 
   ## @param optimize.sidecars can be used to attach extra containers to the optimize deployment
   sidecars: []
@@ -1874,11 +1873,11 @@ optimize:
   ## @param optimize.resources.limits.memory
   resources:
     requests:
-      cpu: "100m"
-      memory: "128Mi"
+      cpu: 600m
+      memory: 1Gi
     limits:
-      cpu: "100m"
-      memory: "128Mi"
+      cpu: 2000m
+      memory: 2Gi
 
   ingress:
     ## @param optimize.ingress.enabled if true, an ingress resource is deployed with the Optimize deployment. Only useful if an ingress controller is available, like nginx.
@@ -2113,11 +2112,11 @@ identity:
   ## @param identity.resources.limits.memory
   resources:
     requests:
-      cpu: "100m"
-      memory: "128Mi"
+      cpu: 600m
+      memory: 400Mi
     limits:
-      cpu: "100m"
-      memory: "128Mi"
+      cpu: 2000m
+      memory: 2Gi
 
   ## @param identity.env can be used to set extra environment variables in each identity container. See the documentation https://docs.camunda.io/docs/self-managed/identity/deployment/configuration-variables/ for more details.
   env: []
@@ -2649,11 +2648,11 @@ webModeler:
     ## @param webModeler.restapi.resources.limits.memory
     resources:
       requests:
-        cpu: "100m"
-        memory: "128Mi"
+        cpu: 500m
+        memory: 1Gi
       limits:
-        cpu: "100m"
-        memory: "128Mi"
+        cpu: 1000m
+        memory: 2Gi
 
     ## @extra webModeler.restapi.service configuration of the WebModeler restapi service
     service:
@@ -2816,11 +2815,11 @@ webModeler:
     ## @param webModeler.webapp.resources.limits.memory
     resources:
       requests:
-        cpu: "100m"
-        memory: "128Mi"
+        cpu: 400m
+        memory: 256Mi
       limits:
-        cpu: "100m"
-        memory: "128Mi"
+        cpu: 800m
+        memory: 512Mi
 
     ## @extra webModeler.webapp.service configuration of the WebModeler webapp service
     service:
@@ -3151,7 +3150,7 @@ postgresql:
 ## @extra connectors configuration for the Connectors.
 connectors:
   ## @param connectors.enabled if true, the Connectors deployment and its related resources are deployed via a helm release
-  enabled: false
+  enabled: true
 
   ## @extra connectors.inbound Switch for inbound mode (e.g., for webhook or polling)
   inbound:
@@ -3215,11 +3214,11 @@ connectors:
   ## @param connectors.resources.limits.memory
   resources:
     requests:
-      cpu: "100m"
-      memory: "128Mi"
+      cpu: 1
+      memory: 1Gi
     limits:
-      cpu: "100m"
-      memory: "128Mi"
+      cpu: 2
+      memory: 2Gi
 
   ## @param connectors.env can be used to set extra environment variables in each Connector container
   env: []
