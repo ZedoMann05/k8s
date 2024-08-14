@@ -22,9 +22,9 @@ spec:
           value: "$(echo -n admin:test | base64)"
         volumeMounts:
         - name: nginx-config
-          mountPath: /etc/nginx/conf.d/health.conf
+          mountPath: /etc/nginx/conf.d/delault.conf
           readOnly: true
-          subPath: health.conf
+          subPath: default.conf
       volumes:
       - name: nginx-config
         configMap:
@@ -50,7 +50,11 @@ metadata:
 data:
   health.conf: |
     server {
-        listen 80;
+        listen       80;
+        listen  [::]:80;
+        
+        server_name  localhost;
+        
         location /actuator/health {
             proxy_pass http://flowable-flowable-ui:8080;
             proxy_set_header Authorization "Basic $$(AUTH_BASIC)";
