@@ -17,7 +17,7 @@ cloudSql:
   credentials: cloudsql-credentials.json
 
 ingress:
-  enabled: false
+  enabled: true
   sslRedirect: true
   useHost: true
   class: "nginx"
