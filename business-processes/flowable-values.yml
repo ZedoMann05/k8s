@@ -29,7 +29,7 @@ ui:
   replicas: 1
   service:
     name: flowable-ui
-  contextPath: /
+  contextPath: 
   ingressPath: /
   image:
     repository: flowable/flowable-ui
