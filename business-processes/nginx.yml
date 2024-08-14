@@ -63,7 +63,7 @@ kind: ConfigMap
 metadata:
   name: nginx-config
 data:
-  health.conf: |
+  default.conf: |
     server {
       listen       80;
         
