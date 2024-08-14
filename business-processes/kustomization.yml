@@ -10,9 +10,9 @@ helmCharts:
     version: 10.2.1
     valuesFile: camunda-values.yml
 
-  # - name: flowable
-  #   releaseName: flowable
-  #   repo: https://flowable.github.io/helm/
-  #   namespace: business-processes
-  #   version: 6.8.0
-  #   valuesFile: flowable-values.yml
+  - name: flowable
+    releaseName: flowable
+    repo: https://flowable.github.io/helm/
+    namespace: business-processes
+    version: 6.8.0
+    valuesFile: flowable-values.yml
