@@ -15,32 +15,29 @@ spec:
       initContainers:
       - name: generate-auth
         image: busybox
-        command: ['sh', '-c', 'echo -n "$AUTH_USER:$AUTH_PASS" | base64 > /etc/nginx/auth_basic']
+        command: ['sh', '-c', 'echo -n "$AUTH_USER:$AUTH_PASS" | base64 > /auth/auth_basic']
         env:
         - name: AUTH_USER
-          value: "admin"
+          value: "admin"  # Задайте ім'я користувача
         - name: AUTH_PASS
-          value: "test"
+          value: "test"   # Задайте пароль
         volumeMounts:
-        - name: nginx-config
-          mountPath: /etc/nginx/auth_basic
-          subPath: auth_basic
+        - name: auth-volume
+          mountPath: /auth
       containers:
       - name: nginx
         image: nginx:latest
         ports:
         - containerPort: 80
-        env:
-        - name: AUTH_BASIC
-          valueFrom:
-            configMapKeyRef:
-              name: nginx-config
-              key: auth_basic
         volumeMounts:
+        - name: auth-volume
+          mountPath: /etc/nginx/auth
         - name: nginx-config
           mountPath: /etc/nginx/conf.d/default.conf
           subPath: default.conf
       volumes:
+      - name: auth-volume
+        emptyDir: {}
       - name: nginx-config
         configMap:
           name: nginx-config
