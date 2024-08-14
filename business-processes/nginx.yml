@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-healthcheck
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-healthcheck
+  template:
+    metadata:
+      labels:
+        app: nginx-healthcheck
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: AUTH_BASIC
+          value: "$(echo -n admin:test | base64)"
+        volumeMounts:
+        - name: nginx-config
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
+      volumes:
+      - name: nginx-config
+        configMap:
+          name: nginx-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-healthcheck-service
+spec:
+  selector:
+    app: nginx-healthcheck
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+data:
+  nginx.conf: |
+    server {
+        listen 80;
+        location /actuator/health {
+            proxy_pass http://flowable-flowable-ui:8080;
+            proxy_set_header Authorization "Basic $$(AUTH_BASIC)";
+        }
+    }

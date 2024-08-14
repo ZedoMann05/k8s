@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: flowable-server-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-nginx
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    # If you encounter a redirect loop or are getting a 307 response code
+    # then you need to force the nginx ingress to connect to the backend using HTTPS.
+    #
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: flowable.my-k8s.dynv6.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: flowable-flowable-ui
+            port:
+              name: http
+      - path: /actuator/health
+        pathType: Prefix
+        backend:
+          service:
+            name: nginx-healthcheck-service
+            port:
+              name: http
+  tls:
+  - hosts:
+    - flowable.my-k8s.dynv6.net
+    secretName: flowable-server-tls # as expected by argocd-server

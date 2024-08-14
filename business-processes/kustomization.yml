@@ -1,6 +1,8 @@
 resources:
   - ./app
   - clusterissuer.yml
+  - nginx.yml
+  - ingress.yml
 
 helmCharts:
   - name: camunda-platform
