@@ -2490,7 +2490,7 @@ webModeler:
   # Note: The WebSocket application will be exposed on the configured path suffixed with "-ws", e.g. "/modeler-ws"
   # contextPath: "/modeler"
   ## @param webModeler.contextPath can be used to make WebModeler available on a custom sub-path. This is mainly used to run the Camunda web applications under a single domain.
-  contextPath: ""
+  contextPath: "/modeler"
 
   # WebModeler.
   ######                         #    ######  ###
