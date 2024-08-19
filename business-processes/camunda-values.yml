@@ -1131,7 +1131,7 @@ zeebeGateway:
   ingress:
     grpc:
       ## @param zeebeGateway.ingress.grpc.enabled if true, an ingress resource is deployed with the Zeebe gateway deployment. Only useful if an ingress controller is available, like nginx.
-      enabled: true
+      enabled: false
       ## @param zeebeGateway.ingress.grpc.className defines the class or configuration of ingress which should be used by the controller
       className: nginx
       ## @param zeebeGateway.ingress.grpc.annotations [object] defines the ingress related annotations, consumed mostly by the ingress controller
