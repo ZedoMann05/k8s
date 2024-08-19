@@ -2447,7 +2447,7 @@ identityKeycloak:
 # WebModeler configuration of the WebModeler deployment
 webModeler:
   ## @param webModeler.enabled if true, the WebModeler deployment and its related resources are deployed via a helm release
-  enabled: false
+  enabled: true
 
   ## @param webModeler.fullnameOverride can be used to override the full name of the WebModeler resources
   fullnameOverride: ""
