@@ -612,11 +612,11 @@ zeebe:
   sidecars: []
 
   ## @param zeebe.clusterSize defines the amount of brokers (=replicas), which are deployed via helm
-  clusterSize: "1"
+  clusterSize: "3"
   ## @param zeebe.partitionCount defines how many zeebe partitions are set up in the cluster
-  partitionCount: "1"
+  partitionCount: "3"
   ## @param zeebe.replicationFactor defines how each partition is replicated, the value defines the number of nodes
-  replicationFactor: "1"
+  replicationFactor: "3"
   ## @extra zeebe.env can be used to set extra environment variables in each zeebe broker container
   env:
     ## @param zeebe.env[0].name
@@ -688,9 +688,9 @@ zeebe:
     automountServiceAccountToken: false
 
   ## @param zeebe.cpuThreadCount defines how many threads can be used for the processing on each broker pod
-  cpuThreadCount: "1"
+  cpuThreadCount: "3"
   ## @param zeebe.ioThreadCount defines how many threads can be used for the exporting on each broker pod
-  ioThreadCount: "1"
+  ioThreadCount: "3"
   ## @extra zeebe.resources configuration to set request and limit configuration for the container https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#requests-and-limits
   ## @extra zeebe.resources.requests
   ## @param zeebe.resources.requests.cpu
