@@ -612,7 +612,7 @@ zeebe:
   sidecars: []
 
   ## @param zeebe.clusterSize defines the amount of brokers (=replicas), which are deployed via helm
-  clusterSize: "3"
+  clusterSize: "1"
   ## @param zeebe.partitionCount defines how many zeebe partitions are set up in the cluster
   partitionCount: "3"
   ## @param zeebe.replicationFactor defines how each partition is replicated, the value defines the number of nodes
@@ -889,7 +889,7 @@ zeebe:
 ## @extra Gateway configuration to define properties related to the standalone gateway
 zeebeGateway:
   ## @param zeebeGateway.replicas defines how many standalone gateways are deployed
-  replicas: 2
+  replicas: 1
   ## @extra zeebeGateway.image configuration to configure the ZeebeGateway image specifics
   image:
     ## @param zeebeGateway.image.registry can be used to set container image registry.
@@ -1118,7 +1118,7 @@ zeebeGateway:
   ingress:
     grpc:
       ## @param zeebeGateway.ingress.grpc.enabled if true, an ingress resource is deployed with the Zeebe gateway deployment. Only useful if an ingress controller is available, like nginx.
-      enabled: false
+      enabled: true
       ## @param zeebeGateway.ingress.grpc.className defines the class or configuration of ingress which should be used by the controller
       className: nginx
       ## @param zeebeGateway.ingress.grpc.annotations [object] defines the ingress related annotations, consumed mostly by the ingress controller
@@ -1128,8 +1128,8 @@ zeebeGateway:
       ## @skip zeebeGateway.ingress.grpc.annotations.nginx.ingress.kubernetes.io/proxy-buffer-size
       annotations:
         ingress.kubernetes.io/rewrite-target: "/"
-        cert-manager.io/cluster-issuer: letsencrypt-nginx
-        nginx.ingress.kubernetes.io/ssl-redirect: "true"
+        # cert-manager.io/cluster-issuer: letsencrypt-nginx
+        # nginx.ingress.kubernetes.io/ssl-redirect: "true"
         nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
         nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
       ## @param zeebeGateway.ingress.grpc.path defines the path which is associated with the Zeebe gateway's gRPC service and port https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-rules
@@ -1142,7 +1142,7 @@ zeebeGateway:
       ## @extra zeebeGateway.ingress.grpc.tls configuration for tls on the ingress resource https://kubernetes.io/docs/concepts/services-networking/ingress/#tls
       tls:
         ## @param zeebeGateway.ingress.grpc.tls.enabled if true, then tls is configured on the ingress resource. If enabled the Ingress.host need to be defined.
-        enabled: true
+        enabled: false
         ## @param zeebeGateway.ingress.grpc.tls.secretName defines the secret name which contains the TLS private key and certificate
         secretName: camunda-platform-zeebe-gateway-grpc
     rest:
