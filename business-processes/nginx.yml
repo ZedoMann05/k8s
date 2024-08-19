@@ -86,7 +86,7 @@ data:
       }
       
       location /optimize {
-          proxy_pass http://camunda-operate:80/optimize;
+          proxy_pass http://camunda-optimize:80/optimize;
           proxy_http_version    1.1;
           proxy_set_header    Upgrade $http_upgrade;
           proxy_set_header    Connection keep-alive;
@@ -97,7 +97,7 @@ data:
       }
 
       location /tasklist {
-          proxy_pass http://camunda-operate:80/tasklist;
+          proxy_pass http://camunda-tasklist:80/tasklist;
           proxy_http_version    1.1;
           proxy_set_header    Upgrade $http_upgrade;
           proxy_set_header    Connection keep-alive;
@@ -108,7 +108,7 @@ data:
       }
 
       location /connectors {
-          proxy_pass http://camunda-operate:80/connectors;
+          proxy_pass http://camunda-connectors:8080/connectors;
           proxy_http_version    1.1;
           proxy_set_header    Upgrade $http_upgrade;
           proxy_set_header    Connection keep-alive;
