@@ -3,8 +3,8 @@ resources:
   - clusterissuer.yml
   - zeebe-gateway.yml
   - zeebe.yml
-  # - nginx.yml
-  # - ingress.yml
+  - nginx.yml
+  - ingress.yml
 
 helmCharts:
   - name: camunda-platform

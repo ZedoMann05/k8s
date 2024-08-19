@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: flowable-server-ingress
+  name: camunda-server-ingress
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-nginx
     nginx.ingress.kubernetes.io/app-root: ''
@@ -10,17 +10,10 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: flowable.my-k8s.dynv6.net
+  - host: camunda.my-k8s.dynv6.net
     http:
       paths:
       - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: flowable-flowable-ui
-            port:
-              number: 8080
-      - path: /actuator/health
         pathType: Prefix
         backend:
           service:
@@ -29,5 +22,5 @@ spec:
               name: http
   tls:
   - hosts:
-    - flowable.my-k8s.dynv6.net
-    secretName: flowable-server-tls # as expected by argocd-server
+    - camunda.my-k8s.dynv6.net
+    secretName: camunda-server-tls # as expected by argocd-server
