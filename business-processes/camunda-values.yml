@@ -1117,7 +1117,7 @@ zeebeGateway:
   ingress:
     grpc:
       ## @param zeebeGateway.ingress.grpc.enabled if true, an ingress resource is deployed with the Zeebe gateway deployment. Only useful if an ingress controller is available, like nginx.
-      enabled: true
+      enabled: false
       ## @param zeebeGateway.ingress.grpc.className defines the class or configuration of ingress which should be used by the controller
       className: nginx
       ## @param zeebeGateway.ingress.grpc.annotations [object] defines the ingress related annotations, consumed mostly by the ingress controller
@@ -1286,7 +1286,7 @@ operate:
 
   ingress:
     ## @param operate.ingress.enabled if true, an ingress resource is deployed with the Operate deployment. Only useful if an ingress controller is available, like nginx.
-    enabled: true
+    enabled: false
     ## @param operate.ingress.className defines the class or configuration of ingress which should be used by the controller
     className: nginx
     ## @param operate.ingress.annotations [object] defines the ingress related annotations, consumed mostly by the ingress controller
@@ -1626,7 +1626,7 @@ tasklist:
 
   ingress:
     ## @param tasklist.ingress.enabled if true, an ingress resource is deployed with the tasklist deployment. Only useful if an ingress controller is available, like nginx.
-    enabled: true
+    enabled: false
     ## @param tasklist.ingress.className defines the class or configuration of ingress which should be used by the controller
     className: nginx
     ## @param tasklist.ingress.annotations [object] defines the ingress related annotations, consumed mostly by the ingress controller
@@ -1885,7 +1885,7 @@ optimize:
 
   ingress:
     ## @param optimize.ingress.enabled if true, an ingress resource is deployed with the Optimize deployment. Only useful if an ingress controller is available, like nginx.
-    enabled: true
+    enabled: false
     ## @param optimize.ingress.className defines the class or configuration of ingress which should be used by the controller
     className: nginx
     ## @param optimize.ingress.annotations [object] defines the ingress related annotations, consumed mostly by the ingress controller
@@ -2147,7 +2147,7 @@ identity:
 
   ingress:
     ## @param identity.ingress.enabled if true, an ingress resource is deployed with the identity deployment. Only useful if an ingress controller is available, like nginx.
-    enabled: true
+    enabled: false
     ## @param identity.ingress.className defines the class or configuration of ingress which should be used by the controller
     className: nginx
     ## @param identity.ingress.annotations [object] defines the ingress related annotations, consumed mostly by the ingress controller
@@ -3314,7 +3314,7 @@ connectors:
 
   ingress:
     ## @param connectors.ingress.enabled if true, an ingress resource is deployed with the Connectors deployment. Only useful if an ingress controller is available, like nginx.
-    enabled: true
+    enabled: false
     ## @param connectors.ingress.className defines the class or configuration of ingress which should be used by the controller
     className: nginx
     ## @param connectors.ingress.annotations [object] defines the ingress related annotations, consumed mostly by the ingress controller
