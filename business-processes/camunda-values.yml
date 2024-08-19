@@ -2526,7 +2526,7 @@ webModeler:
       ## @param webModeler.restapi.mail.smtpTlsEnabled if true, enforces TLS encryption for SMTP connections (using STARTTLS)
       smtpTlsEnabled: true
       ## @param webModeler.restapi.mail.existingSecret can be used to provide the name of an existing secret resource containing the SMTP password
-      existingSecret:
+      existingSecret: camunda-secret
       ## @param webModeler.restapi.mail.existingSecretPasswordKey can be used to provide the name of an existing secret key containing the SMTP password
       existingSecretPasswordKey: ""
       ## @param webModeler.restapi.mail.fromAddress defines the email address that will be displayed as the sender of emails sent by WebModeler
