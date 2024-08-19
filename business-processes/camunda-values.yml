@@ -2531,7 +2531,7 @@ webModeler:
       existingSecretPasswordKey: ""
       ## @param webModeler.restapi.mail.fromAddress defines the email address that will be displayed as the sender of emails sent by WebModeler
       # NOTE: This value is mandatory.
-      fromAddress: ""
+      fromAddress: "camunda@test.com"
       ## @param webModeler.restapi.mail.fromName defines the name that will be displayed as the sender of emails sent by WebModeler
       fromName: "Camunda 8"
 
