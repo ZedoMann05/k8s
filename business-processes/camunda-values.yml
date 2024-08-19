@@ -889,7 +889,7 @@ zeebe:
 ## @extra Gateway configuration to define properties related to the standalone gateway
 zeebeGateway:
   ## @param zeebeGateway.replicas defines how many standalone gateways are deployed
-  replicas: 1
+  replicas: 2
   ## @extra zeebeGateway.image configuration to configure the ZeebeGateway image specifics
   image:
     ## @param zeebeGateway.image.registry can be used to set container image registry.
