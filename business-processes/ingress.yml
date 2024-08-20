@@ -4,7 +4,6 @@ metadata:
   name: camunda-server-ingress
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-nginx
-    nginx.ingress.kubernetes.io/app-root: ''
     nginx.ingress.kubernetes.io/ssl-redirect: 'true'
     nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
