@@ -1128,8 +1128,8 @@ zeebeGateway:
       ## @skip zeebeGateway.ingress.grpc.annotations.nginx.ingress.kubernetes.io/proxy-buffer-size
       annotations:
         ingress.kubernetes.io/rewrite-target: "/"
-        cert-manager.io/cluster-issuer: letsencrypt-nginx
-        nginx.ingress.kubernetes.io/ssl-redirect: "true"
+        # cert-manager.io/cluster-issuer: letsencrypt-nginx
+        # nginx.ingress.kubernetes.io/ssl-redirect: "true"
         nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
         nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
       ## @param zeebeGateway.ingress.grpc.path defines the path which is associated with the Zeebe gateway's gRPC service and port https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-rules
@@ -1142,7 +1142,7 @@ zeebeGateway:
       ## @extra zeebeGateway.ingress.grpc.tls configuration for tls on the ingress resource https://kubernetes.io/docs/concepts/services-networking/ingress/#tls
       tls:
         ## @param zeebeGateway.ingress.grpc.tls.enabled if true, then tls is configured on the ingress resource. If enabled the Ingress.host need to be defined.
-        enabled: true
+        enabled: false
         ## @param zeebeGateway.ingress.grpc.tls.secretName defines the secret name which contains the TLS private key and certificate
         secretName: camunda-platform-zeebe-gateway-grpc
     rest:
